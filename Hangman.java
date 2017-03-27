@@ -1,14 +1,18 @@
 class Hangman {
  
+  static public void guess(String word, int lives){
+    char[] emptySpaces = new char[word.length()];
+    
+   for(int i=0; i < word.length(); i++){
+      emptySpaces[i] = '_';
+    }
+    System.out.print(emptySpaces);
+    System.out.println("Lives remaining: " + lives);
+  }
+
   public static void main(String[] args) {
     String word = "TIMMY";
-    String line = "-------------------------";
-    System.out.println(line);
-    System.out.println("Welcome to Hangman!");
-    System.out.println("The word is " + word.length() + " characters long");
-    String wordLength;
-    for(int i=0; i<word.length(); i++){
-    System.out.print(" _");
-}
+    int lives = 5;
+    guess(word, lives);
   }
 }
