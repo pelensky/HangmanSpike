@@ -4,11 +4,8 @@ import java.util.ArrayList;
 class Hangman {
 
   static public void guess(String word, int lives){
-    char[] emptySpaces = new char[word.length()];
-
-    for(int i=0; i < word.length(); i++){
-      emptySpaces[i] = '_';
-    }
+    char[] charactersInWord = new char[word.length()];
+    printCharacters(word, charactersInWord);
 
     Scanner scanner = new Scanner(System.in);
     ArrayList<Character> listOfCharacters = new ArrayList<Character>();
@@ -24,20 +21,20 @@ class Hangman {
       if(word.contains(x + "")){
         for (int y = 0; y < word.length(); y++){
           if(word.charAt(y)==x){
-            emptySpaces[y]=x;
+            charactersInWord[y]=x;
           }
         }
       }
       else {
         lives -= 1;
       }
-    if(word.equals(String.valueOf(emptySpaces))){
-      System.out.println(emptySpaces);
+    if(word.equals(String.valueOf(charactersInWord))){
+      System.out.println(charactersInWord);
       System.out.println("You are the champion!");
       break;
     }
 
-    System.out.print(emptySpaces);
+    System.out.print(charactersInWord);
     System.out.print("\n");
     System.out.println("Lives remaining: " + lives);
     }
@@ -51,10 +48,15 @@ class Hangman {
     System.out.println("Take your first guess");
   }
 
+  public static void printCharacters(String word, char[] charactersInWord){
+    for(int i=0; i < word.length(); i++){
+      charactersInWord[i] = '_';
+    }
+  }
+
   public static void main(String[] args) {
     String word = "TIMMY";
     int lives = 5;
-    String line = "-------------------------";
     welcome();
     guess(word, lives);
   }
