@@ -5,7 +5,8 @@ class Hangman {
 
   static public void guess(String word, int lives){
     char[] charactersInWord = new char[word.length()];
-    printCharacters(word, charactersInWord);
+    setCharactersInWord(word, charactersInWord);
+    printWord(charactersInWord, lives);
 
     Scanner scanner = new Scanner(System.in);
     ArrayList<Character> listOfCharacters = new ArrayList<Character>();
@@ -29,17 +30,13 @@ class Hangman {
         lives -= 1;
       }
     if(word.equals(String.valueOf(charactersInWord))){
-      System.out.println(charactersInWord);
-      System.out.println("You are the champion!");
+      winningSituation(charactersInWord);
       break;
     }
-
-    System.out.print(charactersInWord);
-    System.out.print("\n");
-    System.out.println("Lives remaining: " + lives);
+      printWord(charactersInWord, lives);
     }
     if(lives==0){
-      System.out.println("You Lose");
+      losingSituation();
     }
   }
 
@@ -48,11 +45,26 @@ class Hangman {
     System.out.println("Take your first guess");
   }
 
-  public static void printCharacters(String word, char[] charactersInWord){
+  public static void setCharactersInWord(String word, char[] charactersInWord){
     for(int i=0; i < word.length(); i++){
       charactersInWord[i] = '_';
     }
   }
+
+  public static void printWord(char[] charactersInWord, int lives){
+    System.out.print(charactersInWord);
+    System.out.print("\n");
+    System.out.println("Lives remaining: " + lives);
+  }
+
+    public static void winningSituation(char[] charactersInWord){
+      System.out.println(charactersInWord);
+      System.out.println("You are the champion!");
+    }
+
+    public static void losingSituation(){
+      System.out.println("You Lose");
+    }
 
   public static void main(String[] args) {
     String word = "TIMMY";
