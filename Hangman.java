@@ -14,7 +14,7 @@ class Hangman {
     ArrayList<Character> listOfCharacters = new ArrayList<Character>();
 
     while(lives>0){
-      char x = scanner.next().charAt(0);
+      char x = Character.toUpperCase(scanner.next().charAt(0));
       if(listOfCharacters.contains(x)){
         System.out.println("You have already guessed " + x);
         continue;
@@ -38,6 +38,7 @@ class Hangman {
     }
 
     System.out.print(emptySpaces);
+    System.out.print("\n");
     System.out.println("Lives remaining: " + lives);
     }
     if(lives==0){
@@ -45,9 +46,16 @@ class Hangman {
     }
   }
 
+  public static void welcome(){
+    System.out.println("Welcome to Hangman!");
+    System.out.println("Take your first guess");
+  }
+
   public static void main(String[] args) {
     String word = "TIMMY";
     int lives = 5;
+    String line = "-------------------------";
+    welcome();
     guess(word, lives);
   }
 }
