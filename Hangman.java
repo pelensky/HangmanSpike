@@ -29,10 +29,10 @@ class Hangman {
       else {
         lives -= 1;
       }
-    if(word.equals(String.valueOf(charactersInWord))){
-      winningSituation(charactersInWord);
-      break;
-    }
+      if(word.equals(String.valueOf(charactersInWord))){
+        winningSituation(charactersInWord);
+        break;
+      }
       printWord(charactersInWord, lives);
     }
     if(lives==0){
@@ -57,14 +57,14 @@ class Hangman {
     System.out.println("Lives remaining: " + lives);
   }
 
-    public static void winningSituation(char[] charactersInWord){
-      System.out.println(charactersInWord);
-      System.out.println("You are the champion!");
-    }
+  public static void winningSituation(char[] charactersInWord){
+    System.out.println(charactersInWord);
+    System.out.println("You are the champion!");
+  }
 
-    public static void losingSituation(){
-      System.out.println("You Lose");
-    }
+  public static void losingSituation(){
+    System.out.println("You Lose");
+  }
 
   public static void main(String[] args) {
     String word = "TIMMY";
